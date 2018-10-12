@@ -8,12 +8,11 @@ var config = {
 };
 firebase.initializeApp(config);
 
+// windowController
 const messaging = firebase.messaging();
 
-// ブラウザがService Workerに対応しているか？
 if (navigator.serviceWorker) {
-    // Service Workerに対応していれば、Service Workerを登録する 
-    navigator.serviceWorker.register('./fb-message.js').then(() => {
+    navigator.serviceWorker.register('./client.js').then(() => {
         return navigator.serviceWorker.ready;
     }).catch(() => {
         // Service Workerの登録に失敗した場合
@@ -45,3 +44,4 @@ if (navigator.serviceWorker) {
         });
     });
 }
+
