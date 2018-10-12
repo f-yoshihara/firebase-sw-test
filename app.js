@@ -1,3 +1,5 @@
+'use strict';
+
 var config = {
   apiKey: "AIzaSyDSI_2RZS-R5oaacyghLJ8l1nt1FlMY9XA",
   authDomain: "skip-d0716.firebaseapp.com",
@@ -11,6 +13,7 @@ firebase.initializeApp(config);
 // windowController
 const messaging = firebase.messaging();
 
+console.log('ok')
 if (navigator.serviceWorker) {
     navigator.serviceWorker.register('./client.js').then(() => {
         return navigator.serviceWorker.ready;
@@ -19,7 +22,6 @@ if (navigator.serviceWorker) {
     }).then(registration => {
         // Webプッシュ通知を受信するためにServiceWorkerRegistrationを登録する 
         messaging.useServiceWorker(registration);
-
         // 通知の許可 -> トークンの取得の順でないと、トークンの取得に失敗する 
         messaging.requestPermission().then(() => {
             // 通知許可の取得に成功した場合
